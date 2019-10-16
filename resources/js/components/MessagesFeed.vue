@@ -86,6 +86,7 @@ ul {
         text-align: right;
 
         .text {
+          text-align: left;
           background: #acd5f3;
         }
       }
