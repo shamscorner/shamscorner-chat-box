@@ -11,12 +11,17 @@
 |
 */
 
-Auth::routes();
-
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/contacts', 'ContactsController@get')->name('contacts');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
+    Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
+    
+    Route::get('/contacts', 'ContactsController@get')->name('contacts');
 
-Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+    Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+    
+    Route::post('/conversation/send', 'ContactsController@send');
+});
 
-Route::post('/conversation/send', 'ContactsController@send');
+Auth::routes();

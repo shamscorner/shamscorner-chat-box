@@ -10,7 +10,7 @@
       >
         <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
         <img
-          :src="contact.profile_image"
+          :src="getProfileImageFromPath(contact.profile_image)"
           class="align-self-center img-thumbnail mr-3"
           :alt="contact.name"
           width="100"
@@ -48,6 +48,9 @@ export default {
       this.selected = contact;
 
       this.$emit("selected", contact);
+    },
+    getProfileImageFromPath(image) {
+      return "/storage/profiles/" + image;
     }
   },
   computed: {

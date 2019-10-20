@@ -1988,6 +1988,9 @@ __webpack_require__.r(__webpack_exports__);
     selectContact: function selectContact(contact) {
       this.selected = contact;
       this.$emit("selected", contact);
+    },
+    getProfileImageFromPath: function getProfileImageFromPath(image) {
+      return "/storage/profiles/" + image;
     }
   },
   computed: {
@@ -48061,7 +48064,7 @@ var render = function() {
             _c("img", {
               staticClass: "align-self-center img-thumbnail mr-3",
               attrs: {
-                src: contact.profile_image,
+                src: _vm.getProfileImageFromPath(contact.profile_image),
                 alt: contact.name,
                 width: "100",
                 height: "100"
